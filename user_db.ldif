@@ -1,0 +1,13 @@
+dn: olcDatabase=mdb,cn=config
+changetype: add
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: mdb
+olcSuffix: @basedn@
+olcDbDirectory: /opt/slapd/db
+olcRootDN: cn=root,@basedn@
+olcRootPW: @password@
+olcAccess: to * by * read
+olcDbCheckpoint: 512 30
+olcDbIndex: objectClass eq
+
