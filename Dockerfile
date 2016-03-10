@@ -8,10 +8,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install slapd ldap-utils -y
 
 ADD run.sh run.sh
-ADD conf_db.ldif conf_db.ldif
+ADD *.ldif /
 ADD init_slapd.sh init_slapd.sh
 ADD funcs.sh funcs.sh
-ADD user_db.ldif user_db.ldif
 
 CMD ["/run.sh"]
 

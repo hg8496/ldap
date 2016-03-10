@@ -4,6 +4,7 @@
 
 mkdir -p /opt/slapd/config
 mkdir -p /opt/slapd/db
+mkdir -p /opt/slapd/accesslog
 ENCPASSWD=`slapd -T passwd -s $LDAP_ADMIN_PASSWD`
 for i in `ls *ldif`
 do

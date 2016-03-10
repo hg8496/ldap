@@ -9,7 +9,8 @@ objectClass: olcModuleList
 cn: module{0}
 olcModulePath: /usr/lib/ldap
 olcModuleLoad: {0}back_mdb
-
+olcModuleload: {1}accesslog
+olcModuleload: {2}syncprov
 
 dn: olcDatabase=config,cn=config
 objectClass: olcDatabaseConfig
@@ -17,4 +18,21 @@ olcDatabase: config
 olcAccess: to * by * none
 olcRootDN: cn=root,cn=config
 olcRootPW: @password@
+
+dn: olcDatabase=mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: mdb
+olcSuffix: cn=accesslog
+olcDbDirectory: /opt/slapd/accesslog
+olcRootDN: cn=root,cn=accesslog
+olcRootPW: @password@
+olcAccess: to * by * read
+olcDbCheckpoint: 512 30
+olcDbIndex: default eq
+olcDbIndex: entryCSN,objectClass,reqEnd,reqResult,reqStart
+
+dn: cn=accesslog
+objectClass: auditContainer
+cn: accesslog
 

@@ -11,3 +11,14 @@ olcAccess: to * by * read
 olcDbCheckpoint: 512 30
 olcDbIndex: objectClass eq
 
+dn: olcOverlay=accesslog,olcDatabase={2}mdb,cn=config
+changetype: add
+objectClass: olcOverlayConfig
+objectClass: olcAccessLogConfig
+olcOverlay: accesslog
+olcAccessLogDb: cn=accesslog
+olcAccessLogOps: writes
+olcAccessLogOps: reads
+olcAccessLogOps: session
+# scan the accesslog DB every day, and purge entries older than 7 days
+olcAccessLogPurge: 07+00:00 01+00:00
